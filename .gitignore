@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# self-defined ignoring file
+/data_models/common_db.py
