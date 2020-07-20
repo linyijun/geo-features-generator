@@ -8,7 +8,7 @@ from utils import create_table, LOS_ANGELES_BOUNDING_BOX
 
 def generate_grids(config, area=None):
 
-    bounding_box = WKTElement(config['BOUNDING_BOX'], srid=4326)
+    # bounding_box = WKTElement(config['BOUNDING_BOX'], srid=4326)  # This one is not working
     grid_obj = config['GRID_OBJ']
     resolution = config['RESOLUTION']
     epsg = config['EPSG']
@@ -16,7 +16,7 @@ def generate_grids(config, area=None):
     try:
 
         grids = session.query(func.ST_Dump(
-            func.makegrid_2d(bounding_box, resolution, resolution)).geom.label('geom')  # self-defined function in Psql
+            func.makegrid_2d(func.ST_GeomFromText(config['BOUNDING_BOX'], 4326), resolution, resolution)).geom.label('geom')  # self-defined function in Psql
         ).subquery()
 
         # using the boundary to crop the area

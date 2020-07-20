@@ -4,7 +4,7 @@ from sqlalchemy import func, literal, Sequence
 from data_models.buffer_model import *
 from data_models.common_db import session, engine
 from data_models.geo_feature_buffer_model import *
-from utils import create_table, LOS_ANGELES_OSM, LOS_ANGELES_BOUNDING_BOX
+from utils import create_table, LOS_ANGELES_OSM, LOS_ANGELES_BOUNDING_BOX2
 
 
 def crop_osm(osm_table, bounding_box):
@@ -86,7 +86,7 @@ def main(area, tar):
 
     LOS_ANGELES = {
         'OSM': LOS_ANGELES_OSM,
-        'BOUNDING_BOX': LOS_ANGELES_BOUNDING_BOX,
+        'BOUNDING_BOX': LOS_ANGELES_BOUNDING_BOX2,
         'BUFFER_OBJ_EPA': LosAngelesEPA3000mBuffer,
         'BUFFER_OBJ_FISHNET': LosAngelesFishnet3000mBuffer,
         'GEO_FEATURE_OBJ_EPA': LosAngelesEpaGeoFeature,
